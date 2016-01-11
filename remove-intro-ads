@@ -1,0 +1,29 @@
+#!/usr/bin/python
+
+import os
+
+ads = [
+	'ATVI.bik',
+	'Beenox_Shift.bik',
+	'Dolby_Digital.bik',
+	'Intel_intro.bik',
+	'introf.bik',
+	'NSlogo.bik',
+]
+
+## Uncomment the following line to remove the introduction movie.
+# ads += ['intro.bik']
+
+path = 'Game/Data/movies/bik'
+
+for ad in ads:
+	movie = '%s/%s' % (path, ad)
+	backup = '%s.bak' % movie
+
+	if not os.path.exists(backup):
+		with open(movie, 'rb') as fin:
+			data = fin.read()
+		with open(backup, 'wbx') as fout:
+			fout.write(data)
+	with open(movie, 'wb') as fout:
+		pass
